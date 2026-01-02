@@ -4,7 +4,7 @@
     </main>
 
     <h1>
-        Dashboard!
+        Bem-vindo(a), {{auth()->user()->name}}
     </h1>
 
 </x-layout>
