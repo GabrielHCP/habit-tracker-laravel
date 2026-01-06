@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('habits', function (Blueprint $table) {
+        Schema::create('habit_logs', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\User::class, 'user_id')->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\Habit::class, 'habit_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
+            $table->date('completed_at');
         });
     }
 
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('habits');
+        Schema::dropIfExists('habit_logs');
     }
 };
